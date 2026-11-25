@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><title>Five Star Uploader – TikTok OAuth Callback</title>
+<style>body{background:#0b0e14;color:#f3f5f8;font-family:-apple-system,sans-serif;display:flex;align-items:center;justify-content:center;height:100vh;margin:0}
+.card{background:#151a24;padding:32px;border-radius:16px;max-width:520px;text-align:center;border:1px solid #2a3244}
+code{display:block;background:#0b0e14;padding:12px;border-radius:8px;margin:14px 0;word-break:break-all;color:#f59e0b}</style></head>
+<body><div class="card"><h2>Five Star Uploader</h2><p id="msg">Completing TikTok authorization…</p><code id="codebox"></code></div>
+<script>
+const params = new URLSearchParams(window.location.search);
+const code = params.get("code");
+if (code) {
+  document.getElementById("codebox").textContent = code;
+  window.location.href = "http://127.0.0.1:9150/api/tiktok/callback?" + params.toString();
+} else {
+  document.getElementById("msg").textContent = "TikTok OAuth Callback Endpoint Ready.";
+}
+</script></body></html>
